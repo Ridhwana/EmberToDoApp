@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js • TodoMVC</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+<!-- wrap the inner contents of <body> in a Handlebars script tag with template name todo so that it will call this template when it hits the / route-->
+    <script type="text/x-handlebars" data-template-name="todos">
+      <section id="todoapp">
+
+  <!-- HEADER -->
+        <header id="header">
+          <h1>todos</h1>
+          <input type="text" id="new-todo" placeholder="What needs to be done?" />
+        </header>
+
+  <!-- MAIN SECTION -->
+        <section id="main">
+          <ul id="todo-list">
+
+  <!-- The template loops over the content of its controller. This controller is an instance of ArrayController that Ember has provided for us as the container for our models.  -->
+
+            {{#each}}
+            // This code will apply the CSS class completed when the todo's isCompleted property is true and remove it when the property becomes false.
+              <li {{bind-attr class="isCompleted:completed"}}>
+                <input type="checkbox" class="toggle"></input>
+                <label>{{title}}</label><button class="destroy"></button>
+              </li>
+            {{/each}}
+          
+          </ul>
+
+          <input type="checkbox" id="toggle-all">
+
+        </section>
+
+  <!-- FOOTER -->
+        <footer id="footer">
+          <span id="todo-count">
+            <strong>2</strong> todos left
+          </span>
+          <ul id="filters">
+            <li>
+              <a href="all" class="selected">All</a>
+            </li>
+            <li>
+              <a href="active">Active</a>
+            </li>
+            <li>
+              <a href="completed">Completed</a>
+            </li>
+          </ul>
+
+          <button id="clear-completed">
+            Clear completed (1)
+          </button>
+        </footer>
+      </section>
+
+      <footer id="info">
+        <p>Double-click to edit a todo</p>
+      </footer>
+
+    </script>
+<!-- ... additional lines truncated for brevity ... -->
+    <script src="js/libs/jquery-1.10.2.min.js"></script>
+    <script src="js/libs/handlebars-1.0.0.js"></script>
+    <script src="js/libs/ember.js"></script>
+    <script src="js/libs/ember-data.js"></script>
+
+<!-- include js/application.js and js/router.js after Ember.js and other javascript dependencies -->
+    <script src="js/application.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/models/todo.js"></script>
+
+<!-- ... additional lines truncated for brevity ... -->
+  </body>
+</html>
