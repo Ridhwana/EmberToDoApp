@@ -16,7 +16,11 @@
   <!-- HEADER -->
         <header id="header">
           <h1>todos</h1>
-          <input type="text" id="new-todo" placeholder="What needs to be done?" />
+
+<!-- Will also connect the newTitle property of this templates controller to the value attribute of the input
+When one changes, the other will automatically update to remain synchronized, we connect user interaction (pressing the enter key) to a method createTodo on this templates controller-->
+
+          {{input type="text" id="new-todo" placeholder="What needs to be done?" value=newTitle action="createTodo" }}
         </header>
 
   <!-- MAIN SECTION -->
@@ -26,7 +30,8 @@
   <!-- The template loops over the content of its controller. This controller is an instance of ArrayController that Ember has provided for us as the container for our models.  -->
 
             {{#each}}
-            // This code will apply the CSS class completed when the todo's isCompleted property is true and remove it when the property becomes false.
+            <!-- This code will apply the CSS class completed when the todos isCompleted property is true and remove it when the property becomes false. -->
+            
               <li {{bind-attr class="isCompleted:completed"}}>
                 <input type="checkbox" class="toggle"></input>
                 <label>{{title}}</label><button class="destroy"></button>
