@@ -22,5 +22,15 @@ Todos.TodosController = Ember.ArrayController.extend({
       console.log("todo model", todo)
       todo.save()
     }
-  }
+  },
+
+// The remaining property will return the number of todos whose isCompleted property is false.
+// If the isCompleted value of any todo changes, this property will be recomputed.
+// If the value has changed, the section of the template displaying the count will be automatically updated
+// to reflect the new value.
+
+  remaining: function(){
+    return this.filterBy('isCompleted', false).get('length')
+  }.property('@each.isCompleted')
+
 });
