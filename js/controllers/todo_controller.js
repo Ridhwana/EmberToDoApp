@@ -1,6 +1,19 @@
 // matches the name todo as an itemController in the template.
 Todos.TodoController = Ember.ObjectController.extend({
 
+// when the editTodo action is called it should set the isEditing property of this controller 
+// to true. This will automatically trigger the sections of template that use isEditing to 
+// update their rendered content.
+
+  actions: {
+    editTodo: function() {
+      this.set('isEditing', true);
+    }
+  },
+
+// Above we defined an initial isEditing value of false for controllers of this type
+  isEditing: false,
+
 // When called from the template to display the current isCompleted state of the todo,
 // this property will proxy that question to its underlying model.
 // When called with a value because a user has toggled the checkbox in the template, 
