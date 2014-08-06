@@ -29,11 +29,15 @@ When one changes, the other will automatically update to remain synchronized, we
 
   <!-- The template loops over the content of its controller. This controller is an instance of ArrayController that Ember has provided for us as the container for our models.  -->
 
-            {{#each}}
+<!-- wrap each todo in its own controller by adding an itemController argument -->
+            {{#each itemController="todo"}}
             <!-- This code will apply the CSS class completed when the todos isCompleted property is true and remove it when the property becomes false. -->
-            
+
               <li {{bind-attr class="isCompleted:completed"}}>
-                <input type="checkbox" class="toggle"></input>
+
+<!-- When this input is rendered it will ask for the current value of the controllers isCompleted property. When a user clicks this input, it will set the value of the controllers isCompleted property to either true or false depending on the new checked value of the input. -->
+
+                {{input type="checkbox" checked=isCompleted class="toggle" }}
                 <label>{{title}}</label><button class="destroy"></button>
               </li>
             {{/each}}
