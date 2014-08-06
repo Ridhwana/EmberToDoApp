@@ -1,3 +1,4 @@
+// this name ToDosController matches the name todos within template
 Todos.TodosController = Ember.ArrayController.extend({
   actions: {
     createTodo: function(){
