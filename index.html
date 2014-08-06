@@ -37,8 +37,15 @@ When one changes, the other will automatically update to remain synchronized, we
 
 <!-- When this input is rendered it will ask for the current value of the controllers isCompleted property. When a user clicks this input, it will set the value of the controllers isCompleted property to either true or false depending on the new checked value of the input. -->
 
-                {{input type="checkbox" checked=isCompleted class="toggle" }}
-                <label>{{title}}</label><button class="destroy"></button>
+<!-- it applies the CSS classedit when the controllers isEditing property is true and removes it when the isEditing property is false -->
+
+                {{#if isEditing}}
+                  <input class="edit">
+                {{else}}
+                  {{input type="checkbox" checked=isCompleted class="toggle" }}
+                  <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>
+                {{/if}}
+
               </li>
             {{/each}}
           
