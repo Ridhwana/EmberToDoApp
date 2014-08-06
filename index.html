@@ -33,7 +33,7 @@ When one changes, the other will automatically update to remain synchronized, we
             {{#each itemController="todo"}}
             <!-- This code will apply the CSS class completed when the todos isCompleted property is true and remove it when the property becomes false. -->
 
-              <li {{bind-attr class="isCompleted:completed"}}>
+              <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
 
 <!-- When this input is rendered it will ask for the current value of the controllers isCompleted property. When a user clicks this input, it will set the value of the controllers isCompleted property to either true or false depending on the new checked value of the input. -->
 
