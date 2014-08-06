@@ -31,6 +31,15 @@ Todos.TodosController = Ember.ArrayController.extend({
 
   remaining: function(){
     return this.filterBy('isCompleted', false).get('length')
-  }.property('@each.isCompleted')
+  }.property('@each.isCompleted'),
+
+// The inflection property will return either a plural or singular version of the word "todo"
+// depending on how many todos are currently in the list.
+// The section of the template displaying the count will be automatically updated to reflect the new value.
+
+  inflection: function(){
+    var remaining = this.get('remaining');
+    return remaining === 1 ? 'todo' : 'todos';
+  }.property('remaining')
 
 });
