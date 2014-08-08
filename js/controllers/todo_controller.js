@@ -20,6 +20,8 @@ Todos.TodoController = Ember.ObjectController.extend({
         this.get('model').save();
       }
     },
+    
+// This method will delete the todo locally and then persist this data change.
 
     removeTodo: function(){
       var todo = this.get('model');

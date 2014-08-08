@@ -43,7 +43,7 @@ When one changes, the other will automatically update to remain synchronized, we
                   {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
                 {{else}}
                   {{input type="checkbox" checked=isCompleted class="toggle" }}
-                  <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>
+                  <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button {{action "removeTodo" }} class="destroy"></button>
                 {{/if}}
 
               </li>
