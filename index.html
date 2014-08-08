@@ -9,6 +9,36 @@
 
   <body>
 
+
+    <script type="text/x-handlebars" data-template-name="todos/index">
+
+      <ul id="todo-list">
+<!-- The template loops over the content of its controller. This controller is an instance of ArrayController that Ember has provided for us as the container for our models.  -->
+
+<!-- wrap each todo in its own controller by adding an itemController argument -->
+        {{#each itemController="todo"}}
+        <!-- This code will apply the CSS class completed when the todos isCompleted property is true and remove it when the property becomes false. -->
+
+          <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
+
+<!-- When this input is rendered it will ask for the current value of the controllers isCompleted property. When a user clicks this input, it will set the value of the controllers isCompleted property to either true or false depending on the new checked value of the input. -->
+
+<!-- it applies the CSS classedit when the controllers isEditing property is true and removes it when the isEditing property is false -->
+
+            {{#if isEditing}}
+              {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
+            {{else}}
+              {{input type="checkbox" checked=isCompleted class="toggle" }}
+              <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button {{action "removeTodo" }} class="destroy"></button>
+            {{/if}}
+
+          </li>
+        {{/each}}
+      
+      </ul>
+
+    </script>
+
 <!-- wrap the inner contents of <body> in a Handlebars script tag with template name todo so that it will call this template when it hits the / route-->
     <script type="text/x-handlebars" data-template-name="todos">
       <section id="todoapp">
@@ -25,34 +55,9 @@ When one changes, the other will automatically update to remain synchronized, we
 
   <!-- MAIN SECTION -->
         <section id="main">
-          <ul id="todo-list">
-
-  <!-- The template loops over the content of its controller. This controller is an instance of ArrayController that Ember has provided for us as the container for our models.  -->
-
-<!-- wrap each todo in its own controller by adding an itemController argument -->
-            {{#each itemController="todo"}}
-            <!-- This code will apply the CSS class completed when the todos isCompleted property is true and remove it when the property becomes false. -->
-
-              <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-
-<!-- When this input is rendered it will ask for the current value of the controllers isCompleted property. When a user clicks this input, it will set the value of the controllers isCompleted property to either true or false depending on the new checked value of the input. -->
-
-<!-- it applies the CSS classedit when the controllers isEditing property is true and removes it when the isEditing property is false -->
-
-                {{#if isEditing}}
-                  {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
-                {{else}}
-                  {{input type="checkbox" checked=isCompleted class="toggle" }}
-                  <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button {{action "removeTodo" }} class="destroy"></button>
-                {{/if}}
-
-              </li>
-            {{/each}}
-          
-          </ul>
-
+<!-- The outlet Handlebars helper designates an area of a template that will dynamically update as we transition between routes. Our first new child route will fill this area with the list of all todos in the application. -->
+          {{outlet}}
           <input type="checkbox" id="toggle-all">
-
         </section>
 
   <!-- FOOTER -->
