@@ -21,6 +21,13 @@ Todos.TodosController = Ember.ArrayController.extend({
       // save the new model 
       console.log("todo model", todo)
       todo.save()
+    },
+
+    clearCompleted: function(){
+      var completed = this.filterBy('isCompleted', true);
+// invoke will execute a method on each object in the Array if the method exists on that object.
+      completed.invoke('deleteRecord');
+      completed.invoke('save');
     }
   },
 
