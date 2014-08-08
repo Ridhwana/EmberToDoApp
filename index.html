@@ -57,7 +57,7 @@ When one changes, the other will automatically update to remain synchronized, we
         <section id="main">
 <!-- The outlet Handlebars helper designates an area of a template that will dynamically update as we transition between routes. Our first new child route will fill this area with the list of all todos in the application. -->
           {{outlet}}
-          <input type="checkbox" id="toggle-all">
+          {{input type="checkbox" id="toggle-all" checked=allAreDone}}
         </section>
 
   <!-- FOOTER -->
