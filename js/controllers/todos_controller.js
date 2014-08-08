@@ -40,6 +40,17 @@ Todos.TodosController = Ember.ArrayController.extend({
   inflection: function(){
     var remaining = this.get('remaining');
     return remaining === 1 ? 'todo' : 'todos';
-  }.property('remaining')
+  }.property('remaining'), 
+
+// The completed and clearCompleted methods both invoke the filterBy method,
+// which is part of the ArrayController API and returns an instance of EmberArray
+// which contains only the items for which the callback returns true.
+  hasCompleted: function(){
+    return this.get('completed') > 0;
+  }.property('completed'),
+
+  completed: function(){
+    return this.filterBy('isCompleted', true).get('length');
+  }.property('@each.isCompleted')
 
 });
