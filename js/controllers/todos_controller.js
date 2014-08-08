@@ -63,8 +63,19 @@ Todos.TodosController = Ember.ArrayController.extend({
 // This property will be true if the controller has any todos and every todo's isCompleted property is true.
 // If the isCompleted property of any todo changes, this property will be recomputed. 
 // If the return value has changed, sections of the template that need to update will be automatically updated for us.
+
+// If no value argument is passed this property is being used to populate the current value of the checkbox. 
+// If a value is passed it indicates the checkbox was used by a user and we should set the isCompleted property 
+// of each todo to this new value.
   allAreDone: function(){
-    return !!this.get('length') && this.isEvery('isCompleted');
+    if(value === undefined){
+      return !!this.get('length') && this.isEvery('isCompleted');
+    }
+    else{
+      this.setEach('isCompleted', value);
+      this.invoke('save');
+      return value;
+    }
   }.property('@each.isCompleted')
 
 });
