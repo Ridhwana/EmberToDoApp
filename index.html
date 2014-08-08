@@ -40,7 +40,7 @@ When one changes, the other will automatically update to remain synchronized, we
 <!-- it applies the CSS classedit when the controllers isEditing property is true and removes it when the isEditing property is false -->
 
                 {{#if isEditing}}
-                  {{edit-todo class="edit" value="title" focusOut="acceptChanges" insert-newline="acceptChanges"}}
+                  {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
                 {{else}}
                   {{input type="checkbox" checked=isCompleted class="toggle" }}
                   <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>

@@ -8,29 +8,30 @@ Todos.TodoController = Ember.ObjectController.extend({
   actions: {
     editTodo: function() {
       this.set('isEditing', true);
-    }
+    },
+
+    acceptChanges: function(){
+      this.set('isEditing', false);
+
+      if (Ember.isEmpty(this.get('model.title'))){
+        this.send('removeTodo');
+      }
+      else{
+        this.get('model').save();
+      }
+    },
+
+    removeTodo: function(){
+      var todo = this.get('model');
+      todo.deleteRecord();
+      todo.save();
+    },
+
   },
 
 // Above we defined an initial isEditing value of false for controllers of this type
   isEditing: false,
 
-
-  acceptChanges: function(){
-    this.set('isEditing', false);
-
-    if(Ember.isEmpty(this.get('model').title))){
-      this.send('removeTodo');
-    }
-    else{
-      this.get('model').save();
-    }
-  },
-
-  removeTodo: function(){
-    var todo = this.get('model');
-    todo.deleteRecord();
-    todo.save();
-  },
 
 // When called from the template to display the current isCompleted state of the todo,
 // this property will proxy that question to its underlying model.
