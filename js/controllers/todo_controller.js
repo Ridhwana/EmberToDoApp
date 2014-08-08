@@ -26,7 +26,7 @@ Todos.TodoController = Ember.ObjectController.extend({
   isCompleted: function(key, value){
     // the key is 'isCompleted', 
     // the value can be either undefined or true if you checking a list item that already exists 
-    var model = this.get('model')
+    var model = this.get('model');
 
     if(value === undefined){
       // property being used as a getter
