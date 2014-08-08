@@ -6,6 +6,7 @@ Todos.Router.map(function(){
   this.resource('todos', { path : '/' }, function(){
     //additional child routes will go here
     this.route('active');
+    this.route('completed')
   });
 });
 
