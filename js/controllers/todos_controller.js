@@ -67,7 +67,7 @@ Todos.TodosController = Ember.ArrayController.extend({
 // If no value argument is passed this property is being used to populate the current value of the checkbox. 
 // If a value is passed it indicates the checkbox was used by a user and we should set the isCompleted property 
 // of each todo to this new value.
-  allAreDone: function(){
+  allAreDone: function(key, value){
     if(value === undefined){
       return !!this.get('length') && this.isEvery('isCompleted');
     }
