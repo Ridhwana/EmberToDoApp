@@ -1,10 +1,19 @@
 // This will tell Ember.js to detect when the application's URL matches '/' and to render the todos template.
+// In js/router.js update the router to change the todos mapping, with an additional empty function parameter so it can accept child routes, 
+// and add this first index route:
+
 Todos.Router.map(function(){
-  this.resource('todos', {
-    path : '/'
+  this.resource('todos', { path : '/' }, function(){
+    //additional child routes will go here
   });
 });
 
+
+Todos.TodosIndexRoute = Ember.Route.extend({
+  model: function(){
+    return this.modelFor('todos');
+  }
+});
 //  implement a TodosRoute class with a model function that returns all the existing todos:
 Todos.TodosRoute = Ember.Route.extend({
   model: function(){
@@ -13,3 +22,9 @@ Todos.TodosRoute = Ember.Route.extend({
   }
 
 });
+
+
+// When the application loads at the url '/' Ember.js will enter the todos route and render the todos template
+// as before. It will also transition into the todos.index route and fill the {{outlet}} in the todos template
+// with the todos/index template. The model data for this template is the result of the model method of TodosIndexRoute,
+// which indicates that the model for this route is the same model as for the TodosRoute.
