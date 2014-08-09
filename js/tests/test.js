@@ -4,19 +4,19 @@
 
 Todos.rootElement = '#qunit-fixture'
 // turn on testing mode
-App.setupForTesting();
+Todos.setupForTesting();
 
 // inject test helpers onto window
 emq.globalize();
 
 // if you don't have a custom resolver, setup one:
-App.Resolver = Ember.DefaultResolver.extend({namespace: App});
-setResolver(App.Resolver.create());
+Todos.Resolver = Ember.DefaultResolver.extend({namespace: Todos});
+setResolver(Todos.Resolver.create());
 
 
 test("should be an ember applicaiton", function() {
   equal(
-    App.constructor, Ember.Application,
+    Todos.constructor, Ember.Application,
     'App is an Ember App!'
   );
 });
