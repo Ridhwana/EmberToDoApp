@@ -21,7 +21,10 @@ test("should be an ember application", function() {
   );
 });
 
-// module('Unit:TodosController');
-// test('number of todos whose isCompleted property is false', function() {
-//   debugger
-// });
+moduleFor('controller:todo', 'Todo Controller');
+
+test('check that we set isEditing to false initially', function() {
+  var controller = this.subject();
+  equal(controller.get('isEditing'), false);
+
+});
