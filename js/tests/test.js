@@ -14,7 +14,7 @@ Todos.Resolver = Ember.DefaultResolver.extend({namespace: Todos});
 setResolver(Todos.Resolver.create());
 
 
-test("should be an ember applicaiton", function() {
+test("should be an ember application", function() {
   equal(
     Todos.constructor, Ember.Application,
     'App is an Ember App!'
